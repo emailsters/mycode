@@ -165,10 +165,10 @@ void PasswdOperator::Find(const string& filename, tagRecord* pstRecord)
         {
             if(itor->szKey == filename)
             {
-                memcpy(pstRecord->szKey, itor->szKey, 126);
-                pstRecord->szKey[127] = 0;
-                memcpy(pstRecord->szValue, itor->szValue, 126);
-                pstRecord->szValue[127] = 0;
+                memcpy(pstRecord->szKey, itor->szKey, 125);
+                pstRecord->szKey[126] = 0;
+                memcpy(pstRecord->szValue, itor->szValue, 125);
+                pstRecord->szValue[126] = 0;
                 
                 PrintRecord(*pstRecord);
                 return;

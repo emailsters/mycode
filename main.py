@@ -4,7 +4,7 @@ import os
 import sys
 
 g_test_cases = ('test1', 'test2', 'test3')
-g_cases_home = os.getcwd() + '/'
+g_cases_home = os.getcwd()
 
 def compile_action(flag):
 	os.chdir(g_cases_home)
@@ -15,8 +15,9 @@ def compile_action(flag):
 		ci_cmd = 'make clean'
 
 	for case_dir in g_test_cases:
-		cdir = g_cases_home + case_dir
+		cdir = os.path.join('/', g_cases_home, case_dir)
 		os.chdir(cdir)
+		print('Entering directary:%s' %(cdir))
 		os.system(ci_cmd)
 
 if __name__ == '__main__':
