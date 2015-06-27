@@ -3,8 +3,8 @@
 import os
 import sys
 
-g_test_cases = ['test1', 'test2', 'test3']
-g_cases_home = '/home/kewen/py_test/'
+g_test_cases = ('test1', 'test2', 'test3')
+g_cases_home = os.getcwd() + '/'
 
 def compile_action(flag):
 	os.chdir(g_cases_home)
