@@ -1,0 +1,7 @@
+<?php 
+	return array(
+		"dbhost" => "__host__",
+		"dbpasswd" => "__password__",
+		"dbuser" => "__user__"
+	);
+php>

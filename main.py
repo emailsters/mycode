@@ -20,7 +20,27 @@ def compile_action(flag):
 		print('Entering directary:%s' %(cdir))
 		os.system(ci_cmd)
 
-if __name__ == '__main__':
+def fill_template():
+	tpl_name = "index.php.template"
+	file_name = "index.php"
+
+	tpl_fp = open(tpl_name, "r")
+	file_fp = open(file_name, "w")
+	lines = tpl_fp.readlines()
+
+	for line in lines:
+		if "__host__" in line:
+			file_fp.write(line.replace("__host__", "myhost"))
+		elif "__password__" in line:
+			file_fp.write(line.replace("__password__", "mypassword"))
+		elif "__user__" in line:
+			file_fp.write(line.replace("__user__", "myuser"))
+		else:
+			file_fp.write(line)
+	tpl_fp.close()
+	file_fp.close()
+
+def main(sys):
 	arg_num = len(sys.argv);
 	if arg_num > 1:
 		arg = sys.argv[1]
@@ -30,3 +50,7 @@ if __name__ == '__main__':
 			compile_action(1)
 	else:
 		print('use -b to compile, -c to clean')
+
+if __name__ == '__main__':
+	#main(sys)
+	fill_template()
