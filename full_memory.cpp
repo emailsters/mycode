@@ -222,7 +222,7 @@ void Daemon(FuncDaemonAction pfnDaemon)
 		g_pMemPointerVector = new vector<char*>;
 		if(!g_pMemPointerVector)
 		{
-			cout<<"g_pMemPointerVector is NULL, exit"<<endl;
+			Log("g_pMemPointerVector is NULL, exit");
 			delete g_pChildLogger;
 			g_pChildLogger = NULL;
 			return;
@@ -239,7 +239,7 @@ void Daemon(FuncDaemonAction pfnDaemon)
 		g_bRunning = true;
 		while(g_bRunning)
 		{
-			sleep(2);
+			sleep(10000000);
 		}
 
 		CleanMemory();
