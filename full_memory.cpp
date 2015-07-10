@@ -184,7 +184,7 @@ void FillMemory(size_t uiSize)
 
         g_pMemPointerVector->push_back(p);
         uiTargetSize = (int)stMemInfo.uiMemLeft + (int)stMemInfo.uiSwapLeft - MEM_LEFT;
-        sleep(1);
+        usleep(500000);
     }
 
     CloseMemoryInfoHandle(fp);
