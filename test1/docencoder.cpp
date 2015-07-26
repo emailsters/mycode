@@ -28,6 +28,9 @@ typedef struct Record
 class Coder 
 {
 public:
+    Coder();
+    virtual ~Coder();
+public:
     virtual void Encode(tagRecord* pstSrc) = 0;
     virtual void Decode(tagRecord* pstSrc) = 0;
 };

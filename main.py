@@ -7,6 +7,7 @@ import ConfigParser
 g_test_cases = ('test1', 'test2', 'test3')
 g_cases_home = os.getcwd()
 
+
 class Configuration():
     def __init__(self, conf_file):
         self.conf_file = conf_file

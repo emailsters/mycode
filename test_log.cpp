@@ -59,10 +59,20 @@ CLogger* g_pLogger = new CLogger;
 	{ \
 		g_pLogger->WriteLog("[%s, %u]:" fmt, __FILE__, __LINE__, ##args); \
 	}while(0)
-
+void test_step()
+{
+    int i = 0;
+    int sum = 0;
+    for(i = 0; i < 10; ++i)
+    {
+        sum += i;
+        printf("%d\n", sum);
+    }
+}
 int main()
 {
 	int i = 0;
+    test_step();
 	while(i < 10)
 	{
 		LogDebug("hello");
