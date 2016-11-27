@@ -1,0 +1,41 @@
+#! /bin/bash
+
+if [ $# -lt 2 ]; then
+    echo "parameter incorrect. Usage:merge-static-lib target_lib source_libs"
+    exit 1;
+fi
+
+cmd_file=static_cmd_file
+name="lib${1}.a"
+target=$(readlink -f $name)
+
+rm -rf $cmd_file
+
+echo "OPEN $target" >> $cmd_file
+
+j=0
+for i in $@; do
+    if [ $j -eq 0 ]; then
+        j=$(($j+1))
+        continue
+    fi
+    abs_name="lib${i}.a"
+    if [ ! -f $abs_name ]; then
+        echo "$abs_name not exist"
+        exit 1
+    fi
+    real_path=$(readlink -f $abs_name)
+    echo "ADDLIB $real_path" >> $cmd_file
+done
+
+echo "SAVE" >> $cmd_file
+echo "END" >> $cmd_file
+cat $cmd_file | ar -M
+if [ $? -ne 0 ]; then
+    echo "merge static libs failed"
+fi
+
+rm $cmd_file
+
+ranlib $target
+
